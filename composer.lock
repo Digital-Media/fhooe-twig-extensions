@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1b5ff4a0c3bce553cc303949fffb1da",
+    "content-hash": "c29e939cd14431ca13f5b40204e1178d",
     "packages": [
         {
             "name": "fhooe/router",
