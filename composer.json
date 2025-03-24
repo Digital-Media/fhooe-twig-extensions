@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": "^8.3",
-        "fhooe/router": "^1.0",
+        "fhooe/router": "^2.0",
         "twig/twig": "^3.8"
     },
     "require-dev": {
