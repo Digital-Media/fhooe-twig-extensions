@@ -17,16 +17,22 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../fhooe-router"
+        }
+    ],
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "fhooe/router": "^2.0",
-        "twig/twig": "^3.8"
+        "twig/twig": "^3.20"
     },
     "require-dev": {
-        "pestphp/pest": "^2.32",
-        "phpstan/phpstan": "^1.10"
+        "pestphp/pest": "^3.7",
+        "phpstan/phpstan": "^2.1"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Fhooe\\Twig\\": "src/"
