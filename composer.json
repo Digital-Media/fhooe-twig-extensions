@@ -27,7 +27,7 @@
         "pestphp/pest": "^3.7",
         "phpstan/phpstan": "^2.1"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "Fhooe\\Twig\\": "src/"
