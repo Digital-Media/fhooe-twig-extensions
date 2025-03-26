@@ -30,7 +30,7 @@ it("provides the session function in templates", function () {
  * Tests retrieving a session value that exists.
  */
 it("retrieves an existing session value", function () {
-    $_SESSION['test_key'] = 'test_value';
+    $_SESSION["test_key"] = "test_value";
     $output = render($this->sessionExtension, "{{ session('test_key') }}");
     expect($output)->toBe("test_value");
 });
@@ -47,10 +47,10 @@ it("returns empty string for non-existent session value", function () {
  * Tests retrieving different types of session values.
  */
 it("handles different types of session values", function () {
-    $_SESSION['string'] = 'test';
-    $_SESSION['number'] = 42;
-    $_SESSION['array'] = ['key' => 'value'];
-    $_SESSION['boolean'] = true;
+    $_SESSION["string"] = "test";
+    $_SESSION["number"] = 42;
+    $_SESSION["array"] = ["key" => "value"];
+    $_SESSION["boolean"] = true;
 
     $output = render(
         $this->sessionExtension,
@@ -63,9 +63,9 @@ it("handles different types of session values", function () {
  * Tests retrieving nested array values from session.
  */
 it("handles nested array values in session", function () {
-    $_SESSION['nested'] = [
-        'level1' => [
-            'level2' => 'value',
+    $_SESSION["nested"] = [
+        "level1" => [
+            "level2" => "value",
         ],
     ];
 
