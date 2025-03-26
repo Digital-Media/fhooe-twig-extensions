@@ -59,3 +59,56 @@ it("renders a template and outputs the base path from get_base_path() when a bas
 
     expect($output)->toBe("/some/basepath");
 });
+
+/**
+ * Tests url_for() with query parameters.
+ */
+it("handles query parameters correctly in url_for()", function () {
+    $output = render($this->routerExtension, "{{ url_for('/test?param=value&other=123')|raw }}");
+    expect($output)->toBe("/test?param=value&other=123");
+
+    // Mit Base-Path
+    $this->router->setBasePath("/some/basepath");
+    $output = render($this->routerExtension, "{{ url_for('/test?param=value')|raw }}");
+    expect($output)->toBe("/some/basepath/test?param=value");
+});
+
+/**
+ * Tests url_for() with special characters.
+ */
+it("handles special characters correctly in url_for()", function () {
+    $output = render($this->routerExtension, "{{ url_for('/test/äöü/&%20space')|raw }}");
+    expect($output)->toBe("/test/äöü/&%20space");
+
+    // Mit Base-Path und Sonderzeichen
+    $this->router->setBasePath("/ümlaut/test");
+    $output = render($this->routerExtension, "{{ url_for('/späcial') }}");
+    expect($output)->toBe("/ümlaut/test/späcial");
+});
+
+/**
+ * Tests url_for() with nested paths.
+ */
+it("handles nested paths correctly in url_for()", function () {
+    $output = render($this->routerExtension, "{{ url_for('/deep/nested/path/test') }}");
+    expect($output)->toBe("/deep/nested/path/test");
+
+    // Mit Base-Path
+    $this->router->setBasePath("/api/v1");
+    $output = render($this->routerExtension, "{{ url_for('/users/123/posts/456') }}");
+    expect($output)->toBe("/api/v1/users/123/posts/456");
+});
+
+/**
+ * Tests url_for() with multiple slashes.
+ */
+it("preserves multiple slashes in url_for()", function () {
+    // Doppelte Slashes
+    $output = render($this->routerExtension, "{{ url_for('//test//path//') }}");
+    expect($output)->toBe("//test//path//");
+
+    // Mit Base-Path
+    $this->router->setBasePath("/api//v1/");
+    $output = render($this->routerExtension, "{{ url_for('///test///') }}");
+    expect($output)->toBe("/api//v1////test///");
+});

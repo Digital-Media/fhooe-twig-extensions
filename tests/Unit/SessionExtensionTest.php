@@ -11,42 +11,64 @@ use Fhooe\Twig\SessionExtension;
  */
 beforeEach(function () {
     $this->sessionExtension = new SessionExtension();
+    // Make sure no session is running
+    if (session_status() === PHP_SESSION_ACTIVE) {
+        session_destroy();
+    }
+    session_start();
 });
 
 /**
- * Uses the session() function in a template to output the correct value from the session when the key is set.
+ * Tests if the session function is available in templates.
  */
-it("renders a template and outputs the correct value from the session when the key is set", function () {
-    startSession();
-
-    $_SESSION["test"] = "test value";
-
-    $output = render($this->sessionExtension, "{{ session('test') }}");
-    expect($output)->toBe("test value");
-
-    destroySession();
+it("provides the session function in templates", function () {
+    $output = render($this->sessionExtension, "{{ session('test_key') }}");
+    expect($output)->toBe("");
 });
 
 /**
- * Uses the session() function in a template to output an empty string from the session when the key is not set.
+ * Tests retrieving a session value that exists.
  */
-it("renders a template and outputs an empty string from the session when the key is not set", function () {
-    startSession();
-
-    $output = render($this->sessionExtension, "{{ session('test') }}");
-    expect($output)->toBeEmpty();
-
-    destroySession();
+it("retrieves an existing session value", function () {
+    $_SESSION["test_key"] = "test_value";
+    $output = render($this->sessionExtension, "{{ session('test_key') }}");
+    expect($output)->toBe("test_value");
 });
 
 /**
- * Uses the session() function in a template to output an empty string when no session is started.
+ * Tests retrieving a non-existent session value.
  */
-it("renders a template and outputs an empty string when no session is started", function () {
-    // Unset the session superglobal to make sure that the array is not present
-    unset($_SESSION);
+it("returns empty string for non-existent session value", function () {
+    $output = render($this->sessionExtension, "{{ session('non_existent_key') }}");
+    expect($output)->toBe("");
+});
 
-    $output = render($this->sessionExtension, "{{ session('test') }}");
+/**
+ * Tests retrieving different types of session values.
+ */
+it("handles different types of session values", function () {
+    $_SESSION["string"] = "test";
+    $_SESSION["number"] = 42;
+    $_SESSION["array"] = ["key" => "value"];
+    $_SESSION["boolean"] = true;
 
-    expect($output)->toBeEmpty();
+    $output = render(
+        $this->sessionExtension,
+        "{{ session('string') }} {{ session('number') }} {{ session('array')|json_encode|raw }} {{ session('boolean') }}",
+    );
+    expect($output)->toBe("test 42 {\"key\":\"value\"} 1");
+});
+
+/**
+ * Tests retrieving nested array values from session.
+ */
+it("handles nested array values in session", function () {
+    $_SESSION["nested"] = [
+        "level1" => [
+            "level2" => "value",
+        ],
+    ];
+
+    $output = render($this->sessionExtension, "{{ session('nested')|json_encode|raw }}");
+    expect($output)->toBe("{\"level1\":{\"level2\":\"value\"}}");
 });

@@ -22,7 +22,7 @@ final class SessionExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-          new TwigFunction("session", [$this, "getSessionEntry"])
+            new TwigFunction("session", [$this, "getSessionEntry"]),
         ];
     }
 

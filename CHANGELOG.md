@@ -14,6 +14,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## [2.0.0] - 2025-03-26
+
+### Added
+
+- Added more and better tests.
+
+### Changed
+
+- Requires `Router` 2.0.0.
+- `Router` property in `RouterExtension` is now `readonly`.
+- Switched to PHP 8.4 as a minimum requirement.
+- Updated all dependencies.
+
 ## [1.0.0] - 2024-02-05
 
 ### Added
@@ -27,5 +40,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added notes on Contributing.
 - Added this changelog.
 
-[Unreleased]: https://github.com/Digital-Media/fhooe-twig-extensions/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/Digital-Media/fhooe-twig-extensions/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/Digital-Media/fhooe-twig-extensions/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/Digital-Media/fhooe-twig-extensions/releases/tag/v1.0.0

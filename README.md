@@ -1,6 +1,6 @@
 # fhooe/twig-extensions
 
-A collection of Twig extensions for other *fhooe* packages used in the [Media Technology and Design](https://www.fh-ooe.at/en/hagenberg-campus/studiengaenge/bachelor/media-technology-and-design/) program at the [University of Applied Sciences Upper Austria](https://www.fh-ooe.at/en/hagenberg-campus/). It is intended to be used with packages such as [*fhooe/router*](https://github.com/Digital-Media/fhooe-router) or [*fhooe/router-skeleton*](https://github.com/Digital-Media/fhooe-router-skeleton) respectively.
+A collection of Twig extensions for other *fhooe* packages used in the [Media Technology and Design](https://fh-ooe.at/en/degree-programs/media-technology-and-design-bachelor) program at the [University of Applied Sciences Upper Austria](https://fh-ooe.at/en/campus-hagenberg). It is intended to be used with packages such as [*fhooe/router*](https://github.com/Digital-Media/fhooe-router) or [*fhooe/router-skeleton*](https://github.com/Digital-Media/fhooe-router-skeleton), respectively.
 
 ## Installation
 
