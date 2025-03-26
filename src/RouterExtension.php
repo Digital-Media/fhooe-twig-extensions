@@ -16,19 +16,12 @@ use Twig\TwigFunction;
  */
 final class RouterExtension extends AbstractExtension
 {
-    /**
-     * @var Router The fhooe/router object.
-     */
-    private Router $router;
 
     /**
      * Creates a new Router extension with the fhooe/router object as parameter.
      * @param Router $router The fhooe/router object.
      */
-    public function __construct(Router $router)
-    {
-        $this->router = $router;
-    }
+    public function __construct(private readonly Router $router) {}
 
     /**
      * Provides the router methods urlFor() and getBasePath() as Twig functions url_for() and get_base_path().
@@ -38,7 +31,7 @@ final class RouterExtension extends AbstractExtension
     {
         return [
             new TwigFunction("url_for", [$this->router, "urlFor"]),
-            new TwigFunction("get_base_path", [$this->router, "getBasePath"])
+            new TwigFunction("get_base_path", [$this->router, "getBasePath"]),
         ];
     }
 }
