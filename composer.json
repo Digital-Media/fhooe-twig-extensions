@@ -3,6 +3,7 @@
     "description": "A collection of Twig extensions for other fhooe packages",
     "license": "MIT",
     "type": "library",
+    "version": "3.0.0",
     "keywords": [
         "Twig",
         "extensions",
@@ -18,15 +19,25 @@
         }
     ],
     "require": {
-        "php": "^8.4",
-        "fhooe/router": "^2.0",
-        "twig/twig": "^3.20"
+        "php": "^8.5",
+        "fhooe/router": "^3.0",
+        "twig/twig": "^3.24"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.45",
-        "pestphp/pest": "^3.7",
+        "ergebnis/composer-normalize": "^2.50",
+        "friendsofphp/php-cs-fixer": "^3.94",
+        "pestphp/pest": "^4.4",
         "phpstan/phpstan": "^2.1"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../fhooe-router",
+            "options": {
+                "symlink": false
+            }
+        }
+    ],
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
@@ -40,9 +51,12 @@
         }
     },
     "scripts": {
+        "cs-check": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix",
         "pest": "pest",
         "phpstan": "phpstan analyse src --memory-limit=-1 --level 9 || true",
         "test": [
+            "@cs-check",
             "@phpstan",
             "@pest"
         ]
