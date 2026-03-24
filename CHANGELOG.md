@@ -14,6 +14,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## [3.0.0] - 2026-03-24
+
+### Changed
+
+- Switched to PHP 8.5 as a minimum requirement.
+- Requires `fhooe/router` 3.0.0.
+- `get_base_path` now reads the public `basePath` property directly (replaces the removed `getBasePath()` method).
+- Added PHP-CS-Fixer (`@PER-CS`) and `cs-check`/`cs-fix` scripts.
+- Updated all dependencies.
+
 ## [2.0.0] - 2025-03-26
 
 ### Added
@@ -40,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added notes on Contributing.
 - Added this changelog.
 
-[Unreleased]: https://github.com/Digital-Media/fhooe-twig-extensions/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/Digital-Media/fhooe-twig-extensions/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/Digital-Media/fhooe-twig-extensions/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/Digital-Media/fhooe-twig-extensions/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/Digital-Media/fhooe-twig-extensions/releases/tag/v1.0.0

@@ -34,7 +34,7 @@ use Twig\Loader\ArrayLoader;
 function createTwigEnvironment(string $template, AbstractExtension $extension): Environment
 {
     $loader = new ArrayLoader([
-        "template" => $template
+        "template" => $template,
     ]);
     $twig = new Environment($loader);
     $twig->addExtension($extension);
@@ -89,8 +89,8 @@ function destroySession(): bool
                 "domain" => $params["domain"],
                 "secure" => $params["secure"],
                 "httponly" => $params["httponly"],
-                "samesite" => $params["samesite"]
-            ]
+                "samesite" => $params["samesite"],
+            ],
         );
     }
 
