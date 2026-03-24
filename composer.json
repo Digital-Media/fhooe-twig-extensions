@@ -3,7 +3,6 @@
     "description": "A collection of Twig extensions for other fhooe packages",
     "license": "MIT",
     "type": "library",
-    "version": "3.0.0",
     "keywords": [
         "Twig",
         "extensions",
@@ -29,15 +28,6 @@
         "pestphp/pest": "^4.4",
         "phpstan/phpstan": "^2.1"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../fhooe-router",
-            "options": {
-                "symlink": false
-            }
-        }
-    ],
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
